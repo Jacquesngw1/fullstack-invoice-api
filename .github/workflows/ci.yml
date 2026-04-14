@@ -20,6 +20,7 @@ jobs:
           --health-retries 5
     env:
       DATABASE_URL: postgresql+psycopg2://postgres:devpass@localhost:5432/invoices
+      PYTHONPATH: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

@@ -35,7 +35,10 @@ def test_create_invoice():
 
 def test_list_invoices():
     # Create an invoice first
-    client.post("/api/v1/invoices", json={"vendor": "TestCorp", "amount": 200.0})
+    create_res = client.post(
+        "/api/v1/invoices", json={"vendor": "TestCorp", "amount": 200.0}
+    )
+    assert create_res.status_code == 200
     response = client.get("/api/v1/invoices")
     assert response.status_code == 200
     invoices = response.json()
